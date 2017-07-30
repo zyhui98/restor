@@ -1,0 +1,12 @@
+<HTML>
+<BODY>
+<TITLE>JRadioButtonTest
+</TITLE>
+<APPLET> 
+	CODE=JRadioButtonTest.class
+	WIDTH=260
+	HEIGHT=120
+	NAME = <"JRadioButtonTest">
+</APPLET>
+</BODY>
+</HTML>
