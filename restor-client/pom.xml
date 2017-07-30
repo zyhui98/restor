@@ -16,6 +16,14 @@
 
 	<dependencies>
 
+       <dependency>
+			<groupId>org.jb2011.inf</groupId>
+			<artifactId>beautyeye</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope> 
+        	<systemPath>${basedir}/lib/beautyeye_lnf.jar</systemPath> 
+		</dependency>
+		
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
