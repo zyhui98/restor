@@ -14,6 +14,11 @@ public class HomePage extends JPanel{
 		jTextArea.setFont(new Font("TimesRoman", Font.PLAIN, 10));
 		
 		jTextArea.setText("请先设置休息模式\n开始美好的一天");
+		
+		
+		
+		
+		
 		this.add(jTextArea);
 	}
 

@@ -9,11 +9,12 @@ import lombok.Data;
 @Data
 public class UserData implements Serializable{
 	
-	private Properties properties = new Properties();
 	
 	private String userName;
 	
 	private String password;
+	
+	
 	
 	
 	

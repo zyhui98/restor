@@ -17,6 +17,12 @@ import com.cditie.restor.restor_client.listener.MainWindowListener;
 import com.cditie.restor.restor_client.view.common.MenuPanel;
 import com.cditie.restor.restor_client.view.page.ActivePage;
 
+/**
+ * 主框架
+ * @author jonny
+ * @date 2017年7月30日 下午11:24:42
+ *
+ */
 public class MainFrame extends JFrame {
 
 	/**
