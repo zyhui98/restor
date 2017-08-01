@@ -19,16 +19,10 @@ public class App {
 	
 	public static void main(String[] args) throws InterruptedException {
 		System.out.println("Work and Rest");
-
-		initBeautyEye();
+		//initBeautyEye();
 		
 		SpringContext = new ClassPathXmlApplicationContext("restor.xml");
-		
 		new MainFrame("restor").start();
-
-		Thread.sleep(1000 * 60);
-		
-		System.exit(0);
 
 	}
 	

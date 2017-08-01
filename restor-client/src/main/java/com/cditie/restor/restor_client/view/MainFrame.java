@@ -33,13 +33,13 @@ public class MainFrame extends JFrame {
 	// 构造函数
 	public MainFrame(String str) {
 		super(str);
-		this.setSize(500,500);
+		this.setSize((int)Toolkit.getDefaultToolkit().getScreenSize().getWidth(),(int)Toolkit.getDefaultToolkit().getScreenSize().getHeight());
 		this.setBackground(Color.white);
-		//Insets insets = Toolkit.getDefaultToolkit().getScreenInsets(GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDefaultConfiguration());  
-		int hight = (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight() - 500;
-		int width = (int)Toolkit.getDefaultToolkit().getScreenSize().getWidth() - 500;
+		/*Insets insets = Toolkit.getDefaultToolkit().getScreenInsets(GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDefaultConfiguration());
+		int hight = (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight() - this.getHeight() - insets.bottom;
+		int width = (int)Toolkit.getDefaultToolkit().getScreenSize().getWidth() - this.getWidth();
 		
-		this.setLocation(width,hight);
+		this.setLocation(width/2,hight/2);*/
 		
 		MainLayout mainLayout = new MainLayout();
 		this.setLayout(mainLayout);
@@ -48,12 +48,9 @@ public class MainFrame extends JFrame {
 		menuPanel.initMenu();
 		
 		this.add(menuPanel,BorderLayout.NORTH);
-		
-		ActivePage activePage = new ActivePage();
-		activePage.initPanel();
-		
-		
-		this.add(activePage,BorderLayout.CENTER);
+		ActivePage.FAC.initPanel();
+
+		this.add(ActivePage.FAC,BorderLayout.CENTER);
 		
 		addWindowListener(new MainWindowListener());
 		

@@ -3,7 +3,9 @@ package com.cditie.restor.restor_client;
 public class RestorConstants {
 	
 	public static final String NOTICE_PANEL = "NoticePanel";
-	
+	public static final int DEFAULT_WORK_TIME = 50; //默认工作时间
+	public static final int DEFAULT_REST_TIME = 10; //默认休息时间
+
 	public static enum RestorStyleEnum{
 		
 		TomatoEasy("番茄工作法"),

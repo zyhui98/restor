@@ -11,11 +11,11 @@ public class TimeBO {
 	
 	private boolean mouseUse;
 	
-	private int workTime;
+	private Integer workTime;
 	
-	private int restTime;
+	private Integer restTime;
 	
-	private int restStyle;
+	private String restStyle;
 	
 	
 	

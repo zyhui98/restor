@@ -24,40 +24,41 @@ public class ActivePage extends JPanel{
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public ActivePage(){
-		super();
+	public static ActivePage FAC = new ActivePage();
+
+	private ActivePage(){
 
 	}
 
 	private Map<String, JPanel> pMap = new HashMap();
 
-	private void showPanel(JPanel jPanel) {
-		String name = jPanel.getName();
-		if (pMap.containsKey(name)) {
+	public void showPanel(Class jPanel) {
+		if (pMap.containsKey(jPanel.getName())) {
 			pMap.forEach((k, v) -> {
 				v.setVisible(false);
-				if (k.equals(name)) {
+				if (k.equals(jPanel.getName())) {
 					v.setVisible(true);
 				}
 			});
-
 		} else {
-			pMap.put(name, jPanel);
-			pMap.forEach((k, v) -> {
-				v.setVisible(false);
-			});
-			this.add(jPanel);
-			jPanel.setVisible(true);
+			try {
+				pMap.forEach((k, v) -> {
+						v.setVisible(false);
+				});
+				pMap.put(jPanel.getName(), (JPanel)jPanel.newInstance());
+				FAC.add(pMap.get(jPanel.getName()));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 
 		}
 	}
 
 	public void initPanel() {
+		showPanel(HomePage.class);
 		if(pMap.values().size() == 0){
-			JPanel noticePanel = new NoticePage();
-			showPanel(noticePanel);
+			showPanel(NoticePage.class);
 		}
-		//this.getActivePanel().setVisible(true);
 	}
 
 }
