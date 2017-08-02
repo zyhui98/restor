@@ -19,22 +19,9 @@ public class App {
 	
 	public static void main(String[] args) throws InterruptedException {
 		System.out.println("Work and Rest");
-		//initBeautyEye();
-		
 		SpringContext = new ClassPathXmlApplicationContext("restor.xml");
 		new MainFrame("restor").start();
 
 	}
-	
-	public static void initBeautyEye(){
-		try {
-	        BeautyEyeLNFHelper.frameBorderStyle = BeautyEyeLNFHelper.FrameBorderStyle.osLookAndFeelDecorated;
-			UIManager.put("RootPane.setupButtonVisible", false);
-			BeautyEyeLNFHelper.launchBeautyEyeLNF();
-			
-		} catch (Exception e) {
-			// TODO exception
-		}
-		
-	}
+
 }

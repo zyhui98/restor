@@ -16,18 +16,18 @@ public class HomePage extends JPanel {
 
 	public HomePage() {
 
-		JLabel workLabel = new JLabel();
-		workLabel.setText("好好工作、天天向上");
+		final JLabel workLabel = new JLabel();
+		workLabel.setText("好好工作、天天向上，啦啦啦");
 		workLabel.setVisible(true);
 
-		JLabel restLabel = new JLabel();
-		restLabel.setText("休息是一种享受");
+		final JLabel restLabel = new JLabel();
+		restLabel.setText("休息是一种享受，啦啦啦");
 		restLabel.setVisible(false);
 
 
 		final JLabel numLabel = new JLabel();
 		numLabel.setFont(new Font("TimesRoman", Font.PLAIN, 50));
-		final SimpleDateFormat sf = new SimpleDateFormat("HH:ss");
+		final SimpleDateFormat sf = new SimpleDateFormat("HH:mm:ss");
 		numLabel.setText(sf.format(new Date()));
 
 		java.util.Timer timer = new Timer();
@@ -57,6 +57,11 @@ public class HomePage extends JPanel {
 						int miniter = new Date().getMinutes();
 						if (miniter > 50) {
 							myRobot.mouseMove(0, 0);
+							workLabel.setVisible(false);
+							restLabel.setVisible(true);
+						}else{
+							workLabel.setVisible(true);
+							restLabel.setVisible(false);
 						}
 						/*myRobot.keyPress( KeyEvent.VK_R);
 						myRobot.keyPress( KeyEvent.VK_E);
