@@ -24,7 +24,7 @@ public class AboutPage extends JFrame{
 	public AboutPage(){
 		this.setSize(500,500);
 		this.setLocation(ViewUtil.getOpenLocation(this)[0],ViewUtil.getOpenLocation(this)[1]);
-		JLabel version = new JLabel("Reator V1.0.0");
+		JLabel version = new JLabel("Restor V1.0.0");
 		version.setFont(new Font("TimesRoman", Font.BOLD,30));
 
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat();

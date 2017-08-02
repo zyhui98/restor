@@ -2,7 +2,6 @@ package com.cditie.restor.restor_client;
 
 import javax.swing.UIManager;
 
-import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

@@ -55,7 +55,7 @@ public class HomePage extends JPanel {
 					@Override
 					public void run() {
 						int miniter = new Date().getMinutes();
-						if (miniter > 50) {
+						if (miniter >= timeBO.getWorkTime()) {
 							myRobot.mouseMove(0, 0);
 							workLabel.setVisible(false);
 							restLabel.setVisible(true);
@@ -70,7 +70,7 @@ public class HomePage extends JPanel {
 						myRobot.keyPress( KeyEvent.VK_O);
 						myRobot.keyPress( KeyEvent.VK_R);*/
 					}
-				}, 100, 1);
+				}, 100, 100);
 
 
 			}
