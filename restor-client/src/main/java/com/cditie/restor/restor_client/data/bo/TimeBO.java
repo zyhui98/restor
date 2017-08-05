@@ -17,6 +17,10 @@ public class TimeBO {
 	
 	private String restStyle;
 	
+	private Boolean isMouseConfig;
+	
+	private Boolean isWindowConfig;
+	
 	
 	
 	

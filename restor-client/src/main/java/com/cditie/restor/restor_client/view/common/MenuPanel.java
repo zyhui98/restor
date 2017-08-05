@@ -3,6 +3,7 @@ package com.cditie.restor.restor_client.view.common;
 import com.cditie.restor.restor_client.view.page.ActivePage;
 import com.cditie.restor.restor_client.view.page.HomePage;
 import com.cditie.restor.restor_client.view.page.open.AboutPage;
+import com.cditie.restor.restor_client.view.page.open.SystemConfigPage;
 import com.cditie.restor.restor_client.view.page.open.TimeConfigPage;
 
 import java.awt.FlowLayout;
@@ -47,6 +48,7 @@ public class MenuPanel extends JPanel{
 
 		timeMenuItemListener(timeMenuItem);
 		aboutMenuItemListener(aboutMenuItem);
+		systemMenuItemListener(systemMenuItem);
 		
 		this.add(jMenuBar);
 		
@@ -59,6 +61,17 @@ public class MenuPanel extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("timeMenuItemListener===============================");
 				TimeConfigPage page = new TimeConfigPage();
+				page.setVisible(true);
+			}
+		});
+
+	}
+	private void systemMenuItemListener(JMenuItem jMenuItem){
+		jMenuItem.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("systemMenuItemListener===============================");
+				SystemConfigPage page = new SystemConfigPage();
 				page.setVisible(true);
 			}
 		});

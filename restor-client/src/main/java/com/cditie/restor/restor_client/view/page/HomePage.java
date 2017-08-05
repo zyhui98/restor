@@ -28,13 +28,13 @@ public class HomePage extends JPanel {
 		this.setLayout(gridbag);
 		
 
-		final JLabel styleLabel = (JLabel)ViewUtil.makeLabel(this, "", gridbag, c,0,0);
+		final JLabel styleLabel = (JLabel)ViewUtil.makeComponent(JLabel.class,this, "", gridbag, c,0,0);
 		
 		c.ipady = 200;
-		final JLabel numLabel = (JLabel)ViewUtil.makeLabel(this, "", gridbag, c,0,1);
+		final JLabel numLabel = (JLabel)ViewUtil.makeComponent(JLabel.class,this, "", gridbag, c,0,1);
 		c.fill = GridBagConstraints.CENTER;
 		c.ipady = 0;
-		final JLabel textLabel = (JLabel)ViewUtil.makeLabel(this, "", gridbag, c,0,2);
+		final JLabel textLabel = (JLabel)ViewUtil.makeComponent(JLabel.class,this, "", gridbag, c,0,2);
 
 		numLabel.setFont(new Font("TimesRoman", Font.PLAIN, 50));
 		final SimpleDateFormat sf = new SimpleDateFormat("HH:mm:ss");
