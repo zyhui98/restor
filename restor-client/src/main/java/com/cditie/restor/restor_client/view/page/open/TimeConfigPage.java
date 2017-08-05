@@ -62,7 +62,7 @@ public class TimeConfigPage extends JFrame{
 				UserData userData = userService.getUserData();
 
 				//保存配置信息
-				TimeBO timeBO = new TimeBO();
+				TimeBO timeBO = userData.getTimeBO()!=null ? userData.getTimeBO():new TimeBO();
 				timeBO.setRestStyle(cbx.getSelectedItem().toString());
 				timeBO.setWorkTime(Integer.valueOf(workTime.getText()));
 				timeBO.setRestTime(Integer.valueOf(restTime.getText()));

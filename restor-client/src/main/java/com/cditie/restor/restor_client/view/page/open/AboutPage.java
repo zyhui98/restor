@@ -22,6 +22,7 @@ public class AboutPage extends JFrame{
 
 
 	public AboutPage(){
+		this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		this.setSize(500,500);
 		this.setLocation(ViewUtil.getOpenLocation(this)[0],ViewUtil.getOpenLocation(this)[1]);
 		JLabel version = new JLabel("Restor V1.0.0");

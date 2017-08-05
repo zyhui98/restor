@@ -1,5 +1,6 @@
 package com.cditie.restor.restor_client.view.page;
 
+import java.awt.FlowLayout;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,6 +28,8 @@ public class ActivePage extends JPanel{
 	public static ActivePage FAC = new ActivePage();
 
 	private ActivePage(){
+		
+		this.setLayout(new FlowLayout(FlowLayout.CENTER));
 
 	}
 

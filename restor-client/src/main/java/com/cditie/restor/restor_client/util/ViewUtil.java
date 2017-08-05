@@ -16,7 +16,7 @@ public class ViewUtil {
 		return new int []{width/2,hight/2};
 	}
 
-	public static Component makebutton(JFrame frame, String name, GridBagLayout gridbag,
+	public static Component makebutton(Container frame, String name, GridBagLayout gridbag,
 	                                   GridBagConstraints c,int x,int y ) {
 		c.gridx = x;
 		c.gridy = y;
@@ -27,7 +27,7 @@ public class ViewUtil {
 		return button;
 	}
 
-	public static Component makeLabel(JFrame frame, String name, GridBagLayout gridbag,
+	public static Component makeLabel(Container frame, String name, GridBagLayout gridbag,
 	                                   GridBagConstraints c,int x,int y ) {
 		c.gridx = x;
 		c.gridy = y;
@@ -38,7 +38,7 @@ public class ViewUtil {
 		return button;
 	}
 
-	public static Component makeTextField(JFrame frame, String name, GridBagLayout gridbag,
+	public static Component makeTextField(Container frame, String name, GridBagLayout gridbag,
 	                                   GridBagConstraints c,int x,int y ) {
 		c.gridx = x;
 		c.gridy = y;
@@ -49,7 +49,7 @@ public class ViewUtil {
 		return button;
 	}
 
-	public static Component makeComboBox(JFrame frame, JComboBox jComboBox, GridBagLayout gridbag,
+	public static Component makeComboBox(Container frame, JComboBox jComboBox, GridBagLayout gridbag,
 	                                      GridBagConstraints c,int x,int y ) {
 		c.gridx = x;
 		c.gridy = y;

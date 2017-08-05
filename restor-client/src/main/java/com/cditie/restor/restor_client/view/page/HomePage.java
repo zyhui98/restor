@@ -1,31 +1,41 @@
 package com.cditie.restor.restor_client.view.page;
 
 import com.cditie.restor.restor_client.App;
+import com.cditie.restor.restor_client.RestorConstants;
 import com.cditie.restor.restor_client.data.bo.TimeBO;
 import com.cditie.restor.restor_client.entity.UserService;
+import com.cditie.restor.restor_client.util.ViewUtil;
+import com.cditie.restor.restor_client.view.page.open.AboutPage;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.Timer;
+import java.util.concurrent.atomic.AtomicLong;
 
 import javax.swing.*;
+
+import org.springframework.scheduling.config.IntervalTask;
 
 public class HomePage extends JPanel {
 
 	public HomePage() {
+		
+		GridBagLayout gridbag = new GridBagLayout();
+		GridBagConstraints c = new GridBagConstraints();
+		c.fill = GridBagConstraints.VERTICAL;
+		this.setLayout(gridbag);
+		
 
-		final JLabel workLabel = new JLabel();
-		workLabel.setText("好好工作、天天向上，啦啦啦");
-		workLabel.setVisible(true);
+		final JLabel styleLabel = (JLabel)ViewUtil.makeLabel(this, "", gridbag, c,0,0);
+		
+		c.ipady = 200;
+		final JLabel numLabel = (JLabel)ViewUtil.makeLabel(this, "", gridbag, c,0,1);
+		c.fill = GridBagConstraints.CENTER;
+		c.ipady = 0;
+		final JLabel textLabel = (JLabel)ViewUtil.makeLabel(this, "", gridbag, c,0,2);
 
-		final JLabel restLabel = new JLabel();
-		restLabel.setText("休息是一种享受，啦啦啦");
-		restLabel.setVisible(false);
-
-
-		final JLabel numLabel = new JLabel();
 		numLabel.setFont(new Font("TimesRoman", Font.PLAIN, 50));
 		final SimpleDateFormat sf = new SimpleDateFormat("HH:mm:ss");
 		numLabel.setText(sf.format(new Date()));
@@ -38,39 +48,53 @@ public class HomePage extends JPanel {
 			}
 		}, 0, 1000);
 
-		this.setLayout(new GridLayout(3, 1));
-		this.add(workLabel);
-		this.add(restLabel);
-		this.add(numLabel);
-
 		try {
 			UserService userService = App.SpringContext.getBean(UserService.class);
 			TimeBO timeBO = userService.getUserData().getTimeBO();
 			if (timeBO != null) {
 				System.out.println("timer do .......................");
+				SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMddHHmm");
+				styleLabel.setText(timeBO.getRestStyle());
+				final int nowM = Integer.valueOf(simpleDateFormat.format(new Date()));
 				final Robot myRobot = new Robot();
-				Timer timerCount = new Timer();
-				timer.schedule(new TimerTask() {
+				final long intervalTask = 1000;
+				final AboutPage aboutPage = new AboutPage();
 
+				timer.schedule(new TimerTask() {
 					@Override
 					public void run() {
-						int miniter = new Date().getMinutes();
-						if (miniter >= timeBO.getWorkTime()) {
-							myRobot.mouseMove(0, 0);
-							workLabel.setVisible(false);
-							restLabel.setVisible(true);
+						int nowRunM = Integer.valueOf(simpleDateFormat.format(new Date()));
+						System.out.println(nowRunM);
+						if(timeBO.getRestStyle().equals(RestorConstants.RestorStyleEnum.TomatoEasy.getName())){
+							if((nowRunM-nowM) % (timeBO.getWorkTime() + timeBO.getRestTime()) < timeBO.getWorkTime()){
+								System.out.println("work");
+								textLabel.setText("现在属于工作时间");
+							}else{
+								if(aboutPage.isEnabled()){
+									aboutPage.setVisible(true);
+									aboutPage.setAlwaysOnTop(true);
+								}
+								
+								System.out.println("rest");
+								//myRobot.mouseMove(0, 0);
+								textLabel.setText("现在属于休息时间");
+							}
+							
 						}else{
-							workLabel.setVisible(true);
-							restLabel.setVisible(false);
+							int miniter = new Date().getMinutes();
+							if (miniter >= timeBO.getWorkTime()) {
+								System.out.println("rest");
+								myRobot.mouseMove(0, 0);
+								textLabel.setText("现在属于休息时间");
+							}else{
+								System.out.println("work");
+								textLabel.setText("现在属于工作时间");
+							}
 						}
-						/*myRobot.keyPress( KeyEvent.VK_R);
-						myRobot.keyPress( KeyEvent.VK_E);
-						myRobot.keyPress( KeyEvent.VK_S);
-						myRobot.keyPress( KeyEvent.VK_T);
-						myRobot.keyPress( KeyEvent.VK_O);
-						myRobot.keyPress( KeyEvent.VK_R);*/
+						
+						
 					}
-				}, 100, 100);
+				}, 0, intervalTask);
 
 
 			}
@@ -80,5 +104,12 @@ public class HomePage extends JPanel {
 		}
 
 	}
+	
+	
 
+}
+
+class TimeLog{
+	private int now;
+	
 }
