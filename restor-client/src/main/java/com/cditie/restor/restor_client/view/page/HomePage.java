@@ -86,6 +86,7 @@ public class HomePage extends JPanel {
 							if((nowRunM-nowM) % (timeBO.getWorkTime() + timeBO.getRestTime()) < timeBO.getWorkTime()){
 								System.out.println("work");
 								textLabel.setText("现在属于工作时间");
+								aboutPage.setVisible(false);
 							}else{
 								if(aboutPage.isEnabled()){
 									aboutPage.setVisible(true);
