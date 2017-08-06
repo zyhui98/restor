@@ -43,6 +43,10 @@ public class TimeConfigPage extends JFrame{
 		RestorConstants.RestorStyleEnum[] restorStyleEnums = RestorConstants.RestorStyleEnum.values();
 		for(RestorConstants.RestorStyleEnum restorStyleEnum:restorStyleEnums){
 			cbx.addItem(restorStyleEnum.getName());
+			if(userData.getTimeBO()!=null && userData.getTimeBO().getRestStyle().equals(restorStyleEnum.getName())){
+				cbx.setSelectedItem(restorStyleEnum.getName());
+			}
+
 		}
 
 		ViewUtil.makeComponent(JLabel.class,this, "工作时间", gridbag, c,0,1);
