@@ -8,6 +8,8 @@ import com.cditie.restor.restor_client.util.ViewUtil;
 import com.cditie.restor.restor_client.view.page.open.AboutPage;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -32,10 +34,6 @@ public class HomePage extends JPanel {
 		
 		c.ipady = 200;
 		final JLabel numLabel = (JLabel)ViewUtil.makeComponent(JLabel.class,this, "", gridbag, c,0,1);
-		c.fill = GridBagConstraints.CENTER;
-		c.ipady = 0;
-		final JLabel textLabel = (JLabel)ViewUtil.makeComponent(JLabel.class,this, "", gridbag, c,0,2);
-
 		numLabel.setFont(new Font("TimesRoman", Font.PLAIN, 50));
 		final SimpleDateFormat sf = new SimpleDateFormat("HH:mm:ss");
 		numLabel.setText(sf.format(new Date()));
@@ -47,7 +45,26 @@ public class HomePage extends JPanel {
 				numLabel.setText(sf.format(new Date()));
 			}
 		}, 0, 1000);
+		
+		
+		c.fill = GridBagConstraints.CENTER;
+		c.ipady = 0;
+		final JLabel textLabel = (JLabel)ViewUtil.makeComponent(JLabel.class,this, "", gridbag, c,0,2);
+		final JButton button = (JButton)ViewUtil.makeComponent(JButton.class,this, "开始", gridbag, c,0,3);
+		button.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				count(styleLabel, textLabel);
+				
+			}
+		});
 
+		
+
+	}
+	
+	private void count(JLabel styleLabel,JLabel textLabel){
 		try {
 			UserService userService = App.SpringContext.getBean(UserService.class);
 			TimeBO timeBO = userService.getUserData().getTimeBO();
@@ -59,7 +76,7 @@ public class HomePage extends JPanel {
 				final Robot myRobot = new Robot();
 				final long intervalTask = 1000;
 				final AboutPage aboutPage = new AboutPage();
-
+				java.util.Timer timer = new Timer();
 				timer.schedule(new TimerTask() {
 					@Override
 					public void run() {
@@ -102,14 +119,7 @@ public class HomePage extends JPanel {
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
-
 	}
 	
-	
 
-}
-
-class TimeLog{
-	private int now;
-	
 }
