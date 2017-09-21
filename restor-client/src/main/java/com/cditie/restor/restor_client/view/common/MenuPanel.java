@@ -3,6 +3,7 @@ package com.cditie.restor.restor_client.view.common;
 import com.cditie.restor.restor_client.view.page.ActivePage;
 import com.cditie.restor.restor_client.view.page.HomePage;
 import com.cditie.restor.restor_client.view.page.open.AboutPage;
+import com.cditie.restor.restor_client.view.page.open.RestorNoticePage;
 import com.cditie.restor.restor_client.view.page.open.SystemConfigPage;
 import com.cditie.restor.restor_client.view.page.open.TimeConfigPage;
 
@@ -38,15 +39,18 @@ public class MenuPanel extends JPanel{
 		settingMenu.add(systemMenuItem);
 		
 		JMenu helpMenu = new JMenu("帮助");
+		JMenuItem testItem = new JMenuItem("测试");
 		JMenuItem aboutMenuItem = new JMenuItem("关于");
+		helpMenu.add(testItem);
 		helpMenu.add(aboutMenuItem);
-		
+
 		
 		jMenuBar.add(homeMenu);
 		jMenuBar.add(settingMenu);
 		jMenuBar.add(helpMenu);
 
 		timeMenuItemListener(timeMenuItem);
+		testMenuItemListener(testItem);
 		aboutMenuItemListener(aboutMenuItem);
 		systemMenuItemListener(systemMenuItem);
 		
@@ -89,6 +93,17 @@ public class MenuPanel extends JPanel{
 		});
 
 	}
+	private void testMenuItemListener(JMenuItem jMenuItem){
+		jMenuItem.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				RestorNoticePage aboutPage = new RestorNoticePage();
+				aboutPage.fresh();
+			}
+		});
+
+	}
+
 
 	private void homeMenuListener(JMenu jMenu){
 		jMenu.addMouseListener(new MouseAdapter(){

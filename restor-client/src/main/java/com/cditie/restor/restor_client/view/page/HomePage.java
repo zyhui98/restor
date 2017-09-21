@@ -22,7 +22,6 @@ import com.cditie.restor.restor_client.view.page.open.RestorNoticePage;
 import org.springframework.scheduling.config.IntervalTask;
 
 public class HomePage extends JPanel {
-	final RestorNoticePage restorNoticePage = new RestorNoticePage();
 	public static boolean startFlag = false;
 
 	public HomePage() {
@@ -91,12 +90,14 @@ public class HomePage extends JPanel {
 							if((nowRunM-nowM) % (timeBO.getWorkTime() + timeBO.getRestTime()) < timeBO.getWorkTime()){
 								//System.out.println("work");
 								textLabel.setText("现在属于工作时间");
-								restorNoticePage.setVisible(false);
+
 							}else{
 								if(!"现在属于休息时间".equals(textLabel.getText())){
-									restorNoticePage.setVisible(true);
-									restorNoticePage.setAlwaysOnTop(true);
 									textLabel.setText("现在属于休息时间");
+									RestorNoticePage restorNoticePage = new RestorNoticePage();
+									restorNoticePage.fresh();
+									restorNoticePage.setAlwaysOnTop(true);
+
 								}
 								//System.out.println("rest");
 							}

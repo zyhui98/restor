@@ -33,7 +33,7 @@ public class MainFrame extends JFrame {
 	// 构造函数
 	public MainFrame(String str) {
 		super(str);
-		this.setSize((int)Toolkit.getDefaultToolkit().getScreenSize().getWidth(),(int)Toolkit.getDefaultToolkit().getScreenSize().getHeight());
+		this.setSize((int)Toolkit.getDefaultToolkit().getScreenSize().getWidth()/4,(int)Toolkit.getDefaultToolkit().getScreenSize().getHeight()/2);
 		this.setBackground(Color.white);
 		/*Insets insets = Toolkit.getDefaultToolkit().getScreenInsets(GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDefaultConfiguration());
 		int hight = (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight() - this.getHeight() - insets.bottom;
