@@ -4,6 +4,8 @@ import com.cditie.restor.crawler.dao.mybatis.MybatisStoreDAO;
 import com.cditie.restor.restor_client.App;
 import com.cditie.restor.restor_client.entity.UserService;
 import com.cditie.restor.restor_client.util.ViewUtil;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import org.springframework.util.StringUtils;
 
 import javax.imageio.ImageIO;
@@ -40,26 +42,35 @@ public class RestorNoticePage extends JFrame{
 	public void setPanel(){
 		MybatisStoreDAO mybatisStoreDAO = App.SpringContext.getBean(MybatisStoreDAO.class);
 		final java.util.List<Map<String,Object>> list = mybatisStoreDAO.getBlogContent();
-
+/*		java.util.List<Map<String, Object>> list = Lists.newArrayList();
+		Map<String,Object> map = Maps.newHashMap();
+		map.put("title", "title");
+		map.put("image","http://img04.sogoucdn.com/v2/thumb/resize/w/580/t/1/?appid=200547&url=http://img04.sogoucdn.com/app/a/200547/bf61a53c6d92e4114b65043e880cc0bd.jpg");
+		map.put("content", "dfdfdffffffff<br>1<br><br>1<br><br>1<b<br>1<br><br>1<br><br>1<br>r><br>1<br>2</br>3</br>4<br>");
+		list.add(map);*/
 
 		final JLabel jLabelContent = new JLabel();
-		JButton jButton = new JButton("换一换");
-		GridLayout gridLayout = new GridLayout(2,1);
+		setBlog(list, jLabelContent);
+
 		JPanel jPanel = new JPanel();
-		jPanel.setLayout(gridLayout);
+		jPanel.setAutoscrolls(true);
+		//jPanel.setPreferredSize(new Dimension(799,500));
 		jPanel.add(jLabelContent);
-		jPanel.add(jButton);
 
 		final JScrollPane jScrollPane =  new JScrollPane();
-		jScrollPane.setSize(700,500);
+		jScrollPane.setPreferredSize(new Dimension(700,500));
 		jScrollPane.setAutoscrolls(true);
 		jScrollPane.setVisible(true);
 		jScrollPane.setViewportView(jPanel);
-		this.add(jScrollPane);
+		this.getContentPane().add(jScrollPane);
+
+		JButton jButton = new JButton("换一换");
+		jButton.setSize(100,50);
+		this.add(jButton);
 		this.setLayout(new FlowLayout(FlowLayout.CENTER));
 		this.setVisible(true);
 
-		setBlog(list, jLabelContent);
+
 		jButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -74,6 +85,7 @@ public class RestorNoticePage extends JFrame{
 	 * @param jLabelContent
 	 */
 	private void setBlog(java.util.List<Map<String,Object>> list, JLabel jLabelContent) {
+
 		Collections.shuffle(list);
 		Map<String,Object> blog = list.get(0);
 		System.out.println(blog);
@@ -82,10 +94,14 @@ public class RestorNoticePage extends JFrame{
 			jLabelContent.setText(content);
 		}
 		if(!StringUtils.isEmpty(blog.get("image"))){
-			final String image = "<html><h1>" + blog.get("title") + "</h1><div style='position:relative; height:400px; overflow:auto'><img src='" + blog.get("image") + "'/></div></html>";
+			final String image = "<html><h1>" + blog.get("title") + "</h1><div><img src='" + blog.get("image") + "'/></div></html>";
 			jLabelContent.setText(image);
 		}
-		jLabelContent.setAutoscrolls(true);
+	}
+
+	public static void main(String[] args) {
+		RestorNoticePage restorNoticePage = new RestorNoticePage();
+		restorNoticePage.fresh();
 	}
 
 

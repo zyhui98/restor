@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import com.cditie.restor.restor_client.listener.MainWindowListener;
+import com.cditie.restor.restor_client.util.ViewUtil;
 import com.cditie.restor.restor_client.view.common.MenuPanel;
 import com.cditie.restor.restor_client.view.page.ActivePage;
 
@@ -34,6 +35,7 @@ public class MainFrame extends JFrame {
 	public MainFrame(String str) {
 		super(str);
 		this.setSize((int)Toolkit.getDefaultToolkit().getScreenSize().getWidth()/4,(int)Toolkit.getDefaultToolkit().getScreenSize().getHeight()/2);
+		this.setLocation(ViewUtil.getOpenLocation(this)[0],ViewUtil.getOpenLocation(this)[1]);
 		this.setBackground(Color.white);
 		/*Insets insets = Toolkit.getDefaultToolkit().getScreenInsets(GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDefaultConfiguration());
 		int hight = (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight() - this.getHeight() - insets.bottom;
