@@ -28,7 +28,7 @@ public class HappyCrawler extends BaseSeimiCrawler {
 
 	@Override
 	public String[] startUrls() {
-		return new String[]{"http://haha.sogou.com/tag/li/%E5%9B%A7%E4%BA%BA%E7%B3%97%E4%BA%8B/"};
+		return new String[]{"http://haha.sogou.com/tag/li/%E5%86%B7%E7%AC%91%E8%AF%9D/","http://haha.sogou.com/tag/li/%E7%BE%8E%E5%A5%B3/","http://haha.sogou.com/tag/li/%E6%9C%89%E7%88%B1/"};
 	}
 
 	@Override
