@@ -18,9 +18,12 @@ import java.util.concurrent.atomic.AtomicLong;
 
 import javax.swing.*;
 
+import com.cditie.restor.restor_client.view.page.open.RestorNoticePage;
 import org.springframework.scheduling.config.IntervalTask;
 
 public class HomePage extends JPanel {
+	final RestorNoticePage restorNoticePage = new RestorNoticePage();
+	public static boolean startFlag = false;
 
 	public HomePage() {
 		
@@ -55,8 +58,10 @@ public class HomePage extends JPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				count(styleLabel, textLabel);
-				
+				if(!startFlag){
+					count(styleLabel, textLabel);
+				}
+
 			}
 		});
 
@@ -66,6 +71,7 @@ public class HomePage extends JPanel {
 	
 	private void count(JLabel styleLabel,JLabel textLabel){
 		try {
+			startFlag = true;
 			UserService userService = App.SpringContext.getBean(UserService.class);
 			TimeBO timeBO = userService.getUserData().getTimeBO();
 			if (timeBO != null) {
@@ -75,37 +81,34 @@ public class HomePage extends JPanel {
 				final int nowM = Integer.valueOf(simpleDateFormat.format(new Date()));
 				final Robot myRobot = new Robot();
 				final long intervalTask = 1000;
-				final AboutPage aboutPage = new AboutPage();
 				java.util.Timer timer = new Timer();
 				timer.schedule(new TimerTask() {
 					@Override
 					public void run() {
 						int nowRunM = Integer.valueOf(simpleDateFormat.format(new Date()));
-						System.out.println(nowRunM);
+						//System.out.println(nowRunM);
 						if(timeBO.getRestStyle().equals(RestorConstants.RestorStyleEnum.TomatoEasy.getName())){
 							if((nowRunM-nowM) % (timeBO.getWorkTime() + timeBO.getRestTime()) < timeBO.getWorkTime()){
-								System.out.println("work");
+								//System.out.println("work");
 								textLabel.setText("现在属于工作时间");
-								aboutPage.setVisible(false);
+								restorNoticePage.setVisible(false);
 							}else{
-								if(aboutPage.isEnabled()){
-									aboutPage.setVisible(true);
-									aboutPage.setAlwaysOnTop(true);
+								if(!"现在属于休息时间".equals(textLabel.getText())){
+									restorNoticePage.setVisible(true);
+									restorNoticePage.setAlwaysOnTop(true);
+									textLabel.setText("现在属于休息时间");
 								}
-								
-								System.out.println("rest");
-								//myRobot.mouseMove(0, 0);
-								textLabel.setText("现在属于休息时间");
+								//System.out.println("rest");
 							}
 							
 						}else{
 							int miniter = new Date().getMinutes();
 							if (miniter >= timeBO.getWorkTime()) {
-								System.out.println("rest");
+								//System.out.println("rest");
 								myRobot.mouseMove(0, 0);
 								textLabel.setText("现在属于休息时间");
 							}else{
-								System.out.println("work");
+								//System.out.println("work");
 								textLabel.setText("现在属于工作时间");
 							}
 						}

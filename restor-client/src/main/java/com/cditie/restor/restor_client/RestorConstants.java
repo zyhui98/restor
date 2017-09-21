@@ -13,8 +13,8 @@ public class RestorConstants {
 		TomatoHour("番茄小时法");
 		
 		private String name;
-		
-		
+
+
 
 		private RestorStyleEnum(String name) {
 			this.name = name;

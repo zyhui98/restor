@@ -21,6 +21,8 @@
     <!-- 当前项目所包含的模块 -->
     <modules>
         <module>restor-client</module>
+        <module>crawler</module>
+
 
     </modules>
 
