@@ -19,6 +19,6 @@ public interface MybatisStoreDAO {
     @Options(useGeneratedKeys = true, keyProperty = "blog.id")
     int save(@Param("blog") BlogContent blog);
 
-    @Select("select * from blog order by update_time desc limit 100")
+    @Select("select * from blog order by update_time desc limit 10")
     List<Map<String,Object>> getBlogContent();
 }
