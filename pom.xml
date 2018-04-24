@@ -20,8 +20,9 @@
 
     <!-- 当前项目所包含的模块 -->
     <modules>
-        <module>restor-client</module>
         <module>crawler</module>
+        <module>restor-client</module>
+        <module>restor-server</module>
 
 
     </modules>
@@ -41,6 +42,7 @@
 
     <dependencyManagement>
         <dependencies>
+
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
