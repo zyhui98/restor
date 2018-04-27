@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>Crawler</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
+    <!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
+    <!--[if lt IE 9]>
+    <![endif]-->
+</head>
+<body>
+<div class="header">
+    <nav class="navbar  navbar-inverse">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Crawler</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Login</a></li>
+        </ul>
+
+    </nav>
+
+</div>
+<main class="main" role="main">
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">爬虫列表</h3>
+            </div>
+            <div class="panel-body">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>爬虫编码</th>
+                        <th>爬虫名称</th>
+                        <th>定时信息</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>today</td>
+                        <td>历史上的今天</td>
+                        <td>0 0 * 0 0 0</td>
+                        <td>
+                            <div class="btn-group" role="group" aria-label="...">
+                                <button type="button" class="btn btn-default" onclick="toURL('/crawler/run')">执行</button>
+                                <button type="button" class="btn btn-default">停止</button>
+                                <button type="button" class="btn btn-default">查看日志</button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</main>
+
+
+<script type="text/javascript">
+
+    function toURL(url){
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: "{}",
+            dataType: "json",
+            contentType :"application/json;charset=UTF-8",
+            success: function(data, textStatus, jqXHR){
+                console.info(JSON.stringify(data));
+                alert("成功");
+            }
+        });
+
+    }
+</script>
+
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>

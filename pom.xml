@@ -23,6 +23,8 @@
         <module>crawler</module>
         <module>restor-client</module>
         <module>restor-server</module>
+        <module>cditie-server</module>
+        <module>restor-common</module>
 
 
     </modules>
@@ -37,6 +39,10 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
         </dependency>
     </dependencies>
 
@@ -53,6 +59,11 @@
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>1.16.10</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>22.0</version>
             </dependency>
         </dependencies>
 
