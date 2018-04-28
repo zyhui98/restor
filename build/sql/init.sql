@@ -1,0 +1,61 @@
+CREATE TABLE `crawler` (
+  `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'id ',
+  `name` VARCHAR(320) DEFAULT NULL COMMENT 'name',
+  `code` VARCHAR(4500) DEFAULT NULL COMMENT 'code',
+  `task_info` VARCHAR(400) DEFAULT NULL COMMENT 'task_info',
+  `status` INT(1) DEFAULT 0 COMMENT 'status',
+  `create_time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  `create_user` VARCHAR(45) DEFAULT NULL COMMENT '创建人',
+  `update_user` VARCHAR(45) DEFAULT NULL COMMENT '更新人',
+  PRIMARY KEY (`id`),
+  KEY `index_create_time` (`create_time`),
+  KEY `index_update_time` (`update_time`)
+) ENGINE=INNODB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='爬虫表';
+
+
+
+CREATE TABLE `t_feed` (
+  `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'id ',
+  `name` VARCHAR(320) DEFAULT NULL COMMENT 'name',
+  `code` VARCHAR(4500) DEFAULT NULL COMMENT 'code',
+  `create_time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  `create_user` VARCHAR(45) DEFAULT NULL COMMENT '创建人',
+  `update_user` VARCHAR(45) DEFAULT NULL COMMENT '更新人',
+  PRIMARY KEY (`id`),
+  KEY `index_create_time` (`create_time`),
+  KEY `index_update_time` (`update_time`)
+) ENGINE=INNODB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='订阅表';
+
+CREATE TABLE `t_feed_detail` (
+  `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'id ',
+  `feed_code` VARCHAR(100) DEFAULT NULL COMMENT 'feed_code',
+  `feed_id` BIGINT(20) DEFAULT NULL COMMENT 'feed_id',
+  `title` VARCHAR(100) DEFAULT NULL COMMENT 'title',
+  `desc` VARCHAR(500) DEFAULT NULL COMMENT 'desc',
+  `content` TEXT DEFAULT NULL COMMENT 'content',
+  `create_time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  `create_user` VARCHAR(45) DEFAULT NULL COMMENT '创建人',
+  `update_user` VARCHAR(45) DEFAULT NULL COMMENT '更新人',
+  PRIMARY KEY (`id`),
+  KEY `index_create_time` (`create_time`),
+  KEY `index_update_time` (`update_time`)
+) ENGINE=INNODB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='订阅明细';
+
+CREATE TABLE `t_feed_detail_comment` (
+  `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'id ',
+  `feed_detail_id` BIGINT(20) DEFAULT NULL COMMENT 'feed_detail_id',
+  `user_id` BIGINT(20) DEFAULT NULL COMMENT 'user_id',
+  `comments` TEXT DEFAULT NULL COMMENT 'comments',
+  `device` VARCHAR(100) DEFAULT NULL COMMENT '设备',
+  `os` VARCHAR(45) DEFAULT NULL COMMENT '系统',
+  `create_time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  `create_user` VARCHAR(45) DEFAULT NULL COMMENT '创建人',
+  `update_user` VARCHAR(45) DEFAULT NULL COMMENT '更新人',
+  PRIMARY KEY (`id`),
+  KEY `index_create_time` (`create_time`),
+  KEY `index_update_time` (`update_time`)
+) ENGINE=INNODB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='订阅明细评论';

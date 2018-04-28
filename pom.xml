@@ -14,17 +14,15 @@
         <!-- 不定义的话，默认使用的永远是当前框架的最新版本，如果定义的话是为降级版本使用，自2.1.6统一管理版本以后，如需降级只需要更改parent节点下的version即可 -->
         <!-- 当前项目的版本 -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spring.version>4.1.5.RELEASE</spring.version>
+        <spring.version>4.3.12.RELEASE</spring.version>
         <junit.version>4.12</junit.version>
     </properties>
 
     <!-- 当前项目所包含的模块 -->
     <modules>
-        <module>crawler</module>
-        <module>restor-client</module>
-        <module>restor-server</module>
-        <module>cditie-server</module>
-        <module>restor-common</module>
+        <module>war-crawler</module>
+        <module>jar-restor</module>
+        <module>war-cditie</module>
 
 
     </modules>
@@ -58,7 +56,7 @@
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
-                <version>1.16.10</version>
+                <version>1.16.18</version>
             </dependency>
             <dependency>
                 <groupId>com.google.guava</groupId>
