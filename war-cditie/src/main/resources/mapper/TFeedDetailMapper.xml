@@ -9,7 +9,7 @@
     <result column="feed_code" jdbcType="VARCHAR" property="feedCode" />
     <result column="feed_id" jdbcType="BIGINT" property="feedId" />
     <result column="title" jdbcType="VARCHAR" property="title" />
-    <result column="desc" jdbcType="VARCHAR" property="desc" />
+    <result column="content_desc" jdbcType="VARCHAR" property="contentDesc" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     <result column="create_user" jdbcType="VARCHAR" property="createUser" />

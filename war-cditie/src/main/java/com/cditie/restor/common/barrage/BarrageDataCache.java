@@ -1,4 +1,4 @@
-package com.cditie.restor.common;
+package com.cditie.restor.common.barrage;
 
 import com.cditie.restor.model.BarrageVo;
 import com.google.common.cache.CacheBuilder;
@@ -21,18 +21,20 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 public class BarrageDataCache {
 
+    final static LoadingCache<String,List<BarrageVo>> cache = CacheBuilder.newBuilder().softValues()
+            .maximumSize(5000)
+            .expireAfterAccess(1, TimeUnit.HOURS)
+            .build(new CacheLoader<String, List<BarrageVo>>() {
+                @Override
+                public List<BarrageVo> load(String id) throws Exception {
+                    log.info("id:" + id);
+                    List<BarrageVo> list = Arrays.asList(BarrageQueue.queue.toArray(new BarrageVo[0]));
+                    return list;
+                }
+            });
+
     public static  List<BarrageVo> getCache(){
-        LoadingCache<String,List<BarrageVo>> cache = CacheBuilder.newBuilder().softValues()
-                .maximumSize(5000)
-                .expireAfterWrite(1, TimeUnit.HOURS)
-                .build(new CacheLoader<String, List<BarrageVo>>() {
-                    @Override
-                    public List<BarrageVo> load(String id) throws Exception {
-                        log.info("id:" + id);
-                        List<BarrageVo> list = Arrays.asList(BarrageQueue.queue.toArray(new BarrageVo[0]));
-                        return list;
-                    }
-                });
+
         try {
             return cache.get("default");
         } catch (ExecutionException e) {

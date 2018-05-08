@@ -32,7 +32,8 @@ public class TFeedDetail {
     /**
      * desc
      */
-    private String desc;
+    @Column(name = "content_desc")
+    private String contentDesc;
 
     /**
      * 创建时间
@@ -138,19 +139,19 @@ public class TFeedDetail {
     /**
      * 获取desc
      *
-     * @return desc - desc
+     * @return content_desc - desc
      */
-    public String getDesc() {
-        return desc;
+    public String getContentDesc() {
+        return contentDesc;
     }
 
     /**
      * 设置desc
      *
-     * @param desc desc
+     * @param contentDesc desc
      */
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setContentDesc(String contentDesc) {
+        this.contentDesc = contentDesc;
     }
 
     /**

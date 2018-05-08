@@ -1,5 +1,6 @@
-package com.cditie.restor.common;
+package com.cditie.restor.common.barrage;
 
+import com.cditie.restor.common.SpringUitls;
 import com.cditie.restor.model.BarrageVo;
 import com.cditie.restor.service.IBarrage;
 import lombok.Data;
@@ -22,7 +23,7 @@ import java.util.concurrent.TimeUnit;
  */
 @Data
 @Slf4j
-@Component
+//@Component
 public class BarrageQueue implements InitializingBean{
 
     public static final LinkedBlockingQueue<BarrageVo> queue = new LinkedBlockingQueue();
@@ -42,7 +43,14 @@ public class BarrageQueue implements InitializingBean{
                     log.info(">>>create");
                     Long start = System.currentTimeMillis();
                     //获取所有数据
+                    if(SpringUitls.CONTEXT == null){
+                        Thread.sleep(100);
+                    }
                     Map<String, IBarrage> map = SpringUitls.CONTEXT.getBeansOfType(IBarrage.class);
+                    if(map == null){
+                        log.error("map is null");
+                        return;
+                    }
                     for (IBarrage iBarrage : map.values()) {
                         List<BarrageVo> list = iBarrage.getData(new HashMap<>());
                         log.info(iBarrage.getClass() + "->" + list);
