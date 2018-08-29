@@ -10,7 +10,8 @@ public class CrawlerBootstrap {
 
 	public static void main(String[] args){
 		Seimi s = new Seimi();
-		s.goRun("happy");
+		s.goRun(true,"picture");
+		s.registerShutdownHook();
 
 
 	}
